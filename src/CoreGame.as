@@ -19,9 +19,9 @@ package
 	{
 		public function CoreGame()
 		{
-//			this.addChild(new LinkGame);
-			this.addChild(new MstchingGame);
-//			this.addChild(new PopStarGame);
+//			this.addChild(new LinkGame);//连连看
+//			this.addChild(new MstchingGame);//对对碰
+			this.addChild(new PopStarGame);//消灭星星
 			
 
 			if (stage) init();

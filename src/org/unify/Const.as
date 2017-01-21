@@ -13,9 +13,9 @@ package org.unify
 		/**每个小块大小*/
 		public static const SIZE:Number=50;
 		/**行总个数*/
-		public static const ROW:int=8;
+		public static const ROW:int=12;
 		/**列总个数*/
-		public static const COLUMN:int=6;
+		public static const COLUMN:int=12;
 		/**方块颜色种类*/
 		public static const COLOR_NUM:int=5;
 		

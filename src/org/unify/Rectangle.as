@@ -13,7 +13,8 @@ package org.unify
 		private var _hnum:Number;
 		private var _color:uint=0XCCCCCC;
 		private var _type:int=0;
-		
+		private var centerTxt:TextField;
+		private var seatTxt:TextField;
 		public function Rectangle()
 		{
 			super();
@@ -24,30 +25,46 @@ package org.unify
 			clear();
 			setRect(wnum,hnum,i,color);
 		}
-		public function setRect(w:Number,h:Number,i:int,c:uint):void
+		/**
+		 * w,h,i,c分别代表方块，宽，高，显示数字，颜色
+		 * */
+		public function setRect(w:Number,h:Number,i:int,c:uint,b:Boolean=true):void
 		{
 			_wnum=w;
 			_hnum=h;
 			_color=c;
+			index=i;
 			this.graphics.lineStyle(1);//带黑四边
 			this.graphics.beginFill(_color);
 			this.graphics.drawRect(0,0,w,h);
-			var txt:TextField=new TextField;
-			txt.text=String(i);
-			txt.autoSize="left";
-			txt.x=(w-txt.width)>>1;
-			txt.y=(h-txt.height)>>1;
-			txt.selectable=false;
-			txt.filters=[glowFilter];
-			this.addChild(txt);
-			index=i;
-			//setAlpha();
+			centerTxt=new TextField;
+			centerTxt.text=String(i);
+			centerTxt.autoSize="left";
+			centerTxt.x=(w-centerTxt.width)>>1;
+			centerTxt.y=(h-centerTxt.height)>>1;
+			centerTxt.selectable=false;
+			centerTxt.filters=[glowFilter];
+			this.addChild(centerTxt);
+			debugger();
 		}
-		
-		private function setAlpha():void
+		/**debugger模式下可以看到每个方块所在数组中的位置*/
+		private function debugger():void
+		{
+			var isDebugger:Boolean=true;
+			if(isDebugger==false){
+				setAlpha();
+				clearTxt();
+			}
+		}
+		public function setAlpha():void
 		{
 			if(index==0) this.alpha=0;
 			else		 this.alpha=1;
+		}
+		public function clearTxt():void
+		{
+			if(centerTxt) centerTxt.text="";
+			if(seatTxt) seatTxt.text="";
 		}
 		public function showSeat():void
 		{
@@ -55,15 +72,16 @@ package org.unify
 			if(this.getChildByName(txtName)){
 				this.removeChild(this.getChildByName(txtName));
 			}
-			var txt:TextField=new TextField;
-			txt.name=txtName
-			txt.text=String("("+xnum+","+ynum+")");
-			txt.autoSize="left";
-			txt.selectable=false;
-			txt.y=this.height-txt.height;
-			txt.x=this.width-txt.width;
-			txt.filters=[glowFilter]
-			this.addChild(txt);
+			seatTxt=new TextField;
+			seatTxt.name=txtName
+			seatTxt.text=String("("+xnum+","+ynum+")");
+			seatTxt.autoSize="left";
+			seatTxt.selectable=false;
+			seatTxt.y=this.height-seatTxt.height;
+			seatTxt.x=this.width-seatTxt.width;
+			seatTxt.filters=[glowFilter]
+			this.addChild(seatTxt);
+			debugger();
 		}
 		private function get glowFilter():GlowFilter
 		{

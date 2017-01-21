@@ -39,24 +39,17 @@ package org.coreMstchingGame
 		private function goSearch(map:Array):void
 		{
 			var rect:Rectangle;
-			var isAction:int=0;//用来判断是否需要移动。(如果方块上方都没有有色块就不需要移动)
 			for(var i:int=0;i<map.length;i++){
 				rect=map[i];
 				if(rect.index==0){//发现有空的方块
-					//if(isAction==0){
-						isAction=1;//标注为第一次
-					//}else if(isAction==2){//第三发现空块，在发现一个空方块后发现了一个色块然后又发现了一个空块。需要移动它们
-						var action:FillAction=new FillAction;
-						action.maps=maps;
-						action.map=map;
-						action.gameMap=_gameMap;
-						action.start();
-						action.addEventListener(Event.COMPLETE,onComple);
-						actions.push(action);
-						break;
-					//}
-				}else{//发现有一个是有色块
-					isAction=2//标注为第二次
+					var action:FillAction=new FillAction;
+					action.maps=maps;
+					action.map=map;
+					action.gameMap=_gameMap;
+					action.start();
+					action.addEventListener(Event.COMPLETE,onComple);
+					actions.push(action);
+					break;
 				}
 			}
 			if(actions.length>0){

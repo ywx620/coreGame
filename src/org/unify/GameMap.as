@@ -22,7 +22,7 @@ package org.unify
 			row=r;
 			column=c;
 		}
-		public function start():void
+		public function start(index:int=0,color:uint=0XCCCCCC):void
 		{
 			var w:Number=size;
 			_maps=new Array;
@@ -32,7 +32,7 @@ package org.unify
 				var map:Array=new Array;
 				for(var j:int=0;j<column;j++){
 					rect=new Rectangle();
-					rect.setRect(w,w,0,0XCCCCCC);
+					rect.setRect(w,w,index,color);
 					rect.xnum=j;
 					rect.ynum=i;
 					rect.x=rect.xnum*(w+interval);

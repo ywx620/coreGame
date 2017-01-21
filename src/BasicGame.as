@@ -53,8 +53,13 @@ package
 		public function createBackground():void
 		{
 			background=new Rectangle;
-			background.setRect(this.width,this.height,0,0X999999);
+			background.setRect(this.width,this.height,1,0X999999);
 			this.addChildAt(background,0);
+			
+			var bgMap:GameMap=new GameMap;
+			bgMap.setValue(size,row,column);
+			bgMap.start(1,0XFFFFFF);
+			background.addChild(bgMap);
 		}
 		/**创建地图*/
 		protected function createMap():void
@@ -70,6 +75,7 @@ package
 		{
 			
 		}
+		
 		/**给方块设置滤镜*/
 		protected function setFilters(rect:Rectangle,boo:Boolean):void
 		{

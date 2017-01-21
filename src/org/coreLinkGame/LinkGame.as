@@ -40,6 +40,7 @@ package org.coreLinkGame
 		override protected function initGame():void
 		{
 			createMap();
+			createBackground();
 			createLevel();
 			createSearch();
 			this.addEventListener(Event.ENTER_FRAME,onLoop);

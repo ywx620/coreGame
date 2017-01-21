@@ -67,6 +67,7 @@ package org.corePopStarGame
 					rect.color=colors[index];
 					rect.resetRect(index);
 					rect.showSeat();
+					//rect.clearTxt();
 					//rect.buttonMode=true;
 					rect.addEventListener(MouseEvent.CLICK,onClick);
 					levels.splice(levelIndex,1);
