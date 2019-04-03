@@ -6,19 +6,18 @@ package org.unify
 	
 	public class Rectangle extends Sprite
 	{
-		private var _xnum:int=0;
-		private var _ynum:int=0;
-		private var _index:int=0;
-		private var _wnum:Number;
-		private var _hnum:Number;
-		private var _color:uint=0XCCCCCC;
-		private var _type:int=0;
-		private var centerTxt:TextField;
-		private var seatTxt:TextField;
+		protected var _xnum:int=0;
+		protected var _ynum:int=0;
+		protected var _index:int=0;
+		protected var _wnum:Number;
+		protected var _hnum:Number;
+		protected var _color:uint=0XCCCCCC;
+		protected var _type:int=0;
+		protected var centerTxt:TextField;
+		protected var seatTxt:TextField;
 		public function Rectangle()
 		{
 			super();
-			
 		}
 		public function resetRect(i:int):void
 		{
@@ -28,7 +27,7 @@ package org.unify
 		/**
 		 * w,h,i,c分别代表方块，宽，高，显示数字，颜色
 		 * */
-		public function setRect(w:Number,h:Number,i:int,c:uint,b:Boolean=true):void
+		public function setRect(w:Number,h:Number,i:int,c:uint):void
 		{
 			_wnum=w;
 			_hnum=h;
@@ -48,7 +47,7 @@ package org.unify
 			debugger();
 		}
 		/**debugger模式下可以看到每个方块所在数组中的位置*/
-		private function debugger():void
+		protected function debugger():void
 		{
 			var isDebugger:Boolean=true;
 			if(isDebugger==false){
@@ -83,7 +82,7 @@ package org.unify
 			this.addChild(seatTxt);
 			debugger();
 		}
-		private function get glowFilter():GlowFilter
+		protected function get glowFilter():GlowFilter
 		{
 			return new GlowFilter(0XFFFFFF,3,3,3);
 		}

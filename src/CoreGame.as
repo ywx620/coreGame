@@ -6,6 +6,7 @@ package
 	import org.coreLinkGame.LinkGame;
 	import org.coreMstchingGame.MstchingGame;
 	import org.corePopStarGame.PopStarGame;
+	import org.unify.Circle;
 	import org.unify.Stats;
 
 	/**
@@ -23,6 +24,13 @@ package
 //			this.addChild(new MstchingGame);//对对碰
 			this.addChild(new PopStarGame);//消灭星星
 			
+			var circle:Circle=new Circle();
+			circle.setCircle(20,1,0XFFFF00);
+			circle.x=circle.y=40;
+			circle.xnum=circle.ynum=9;
+			circle.resetCircle(5);
+			circle.showSeat();
+			this.addChild(circle);
 
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
